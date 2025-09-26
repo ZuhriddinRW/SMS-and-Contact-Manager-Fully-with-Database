@@ -103,7 +103,6 @@ class SMS :
 class ContactManager :
     def __init__(self) :
         self.__contacts = []
-        # Database connection - oddiy
         try :
             self.conn = psycopg2.connect (
                 dbname="Contact And SMS Manager Full",
@@ -123,7 +122,6 @@ class ContactManager :
         if not self.conn :
             return
         try :
-            # Contacts table
             self.cur.execute ( '''
                 CREATE TABLE IF NOT EXISTS contacts (
                     id SERIAL PRIMARY KEY,
@@ -134,7 +132,6 @@ class ContactManager :
                 )
             ''' )
 
-            # SMS table
             self.cur.execute ( '''
                 CREATE TABLE IF NOT EXISTS sms_history (
                     id SERIAL PRIMARY KEY,
